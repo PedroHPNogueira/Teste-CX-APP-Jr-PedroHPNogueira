@@ -15,10 +15,20 @@ const setNewSubject = (event, client) => {
 const addLatestTickets = (client) => {
   client.request('/api/v2/tickets.json').then(
     (data) => {
-      const table = document.getElementById("client-last-tickets")
+      const table = document.querySelector("table")
       console.log(table)
       data.tickets.forEach((ticket) => {
-        console.log(ticket)
+        const data = new Date(ticket.created_at)
+        const dataString = data.toLocaleString().split(",")[0]
+
+        const tr = document.createElement("tr")
+        tr.innerHTML = `
+          <td>${ticket.id}</td>
+          <td>${ticket.status}</td>
+          <td>${dataString}</td>
+        `
+
+        table.appendChild(tr)
       })
     }
   )
