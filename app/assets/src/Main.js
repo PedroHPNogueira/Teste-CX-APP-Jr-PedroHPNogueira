@@ -14,8 +14,12 @@ const Main = async () => {
       <textarea rows="3"></textarea>
       <button>Definir assunto</button>
     </div>`;
-    
+
+  // Write App
   App.innerHTML = appBody;
+
+  const button = document.querySelector("button")
+  button.addEventListener("click", (e) => {Core.setNewSubject(e, client)})
 };
 
 export default Main;
