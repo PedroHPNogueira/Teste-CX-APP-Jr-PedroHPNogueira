@@ -12,8 +12,21 @@ const setNewSubject = (event, client) => {
   })
 };
 
+const addLatestTickets = (client) => {
+  client.request('/api/v2/tickets.json').then(
+    (data) => {
+      const table = document.getElementById("client-last-tickets")
+      console.log(table)
+      data.tickets.forEach((ticket) => {
+        console.log(ticket)
+      })
+    }
+  )
+}
+
 const Core = {
   setNewSubject,
+  addLatestTickets
 };
 
 export default Core;
